@@ -1,7 +1,7 @@
-## Put comments here that give an overall description of what your
-## functions do
+## Author: Padmini Gollapalli
+## 
 
-## Write a short comment describing this function
+## Functions for Matrix Inversion Caching
 
 makeCacheMatrix <- function(x = matrix()) {
   
@@ -11,25 +11,25 @@ makeCacheMatrix <- function(x = matrix()) {
         m <<- NULL
       }
       get <- function() x
-      setinv <- function(solve) m <<- solve
-      getinv <- function() m
-      list(set = set, get = get, setinv = setinv,getinv = getinv)
+      setinverse <- function(solve) m <<- solve
+      getinverse <- function() m
+      list(set = set, get = get, setinverse = setinverse,getinverse = getinverse)
 
 }
 
 
-## Write a short comment describing this function
+## GKP: Caching Matrix Inversion
 
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
   
-      m <- x$getinv()
+      m <- x$getinverse()
       if(!is.null(m)) {
-        message("getting cached data")
+        message("GKP: getting cached data")
         return(m)
       }
       data <- x$get()
       m <- solve(data, ...)
-      x$setinv(m)
+      x$setinverse(m)
       m
 }
